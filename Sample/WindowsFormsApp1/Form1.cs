@@ -43,5 +43,22 @@ namespace WindowsFormsApp1 {
 
         private void tbNum2_TextChanged(object sender, EventArgs e) {
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
+
+        }
+        //イベントハンドラ
+        private void btpow_Click_1(object sender, EventArgs e) {
+            int x = decimal.ToInt32(nudX.Value);
+            int y = decimal.ToInt32(nudY.Value);
+            int i = 0;
+            int ans = 1;
+            while (y > i)
+            {
+                ans = ans * x;
+                i += 1;
+            }
+            tbResult.Text = ans.ToString();
+        }
     }
 }
