@@ -49,16 +49,19 @@ namespace WindowsFormsApp1 {
         }
         //イベントハンドラ
         private void btpow_Click_1(object sender, EventArgs e) {
-            int x = decimal.ToInt32(nudX.Value);
-            int y = decimal.ToInt32(nudY.Value);
-            int i = 0;
-            int ans = 1;
-            while (y > i)
-            {
-                ans = ans * x;
-                i += 1;
-            }
-            tbResult.Text = ans.ToString();
+            //int x = decimal.ToInt32(nudX.Value);
+            //int y = decimal.ToInt32(nudY.Value);
+            //int i = 0;
+            //int ans = 1;
+            //while (y > i)
+            //{
+            //    ans = ans * x;
+            //    i += 1;
+            //}
+            //tbResult.Text = ans.ToString();
+
+            double result = Math.Pow((double)nudX.Value , (double)nudY.Value);
+            tbResult.Text = result.ToString();
         }
     }
 }
