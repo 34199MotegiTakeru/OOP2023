@@ -19,8 +19,8 @@ namespace BallApp {
 
         Random r1 = new Random(); //乱数インスタンス
         Random r2 = new Random();
+        
         //コンストラクタ
-
         public SoccerBall(double xp,double yp) {
             Image = Image.FromFile(@"pic\soccer_ball.png");
             PosX = xp - 25;
@@ -32,6 +32,7 @@ namespace BallApp {
             int rndY = r1.Next(-15, 15);
             moveY = (rndY != 0 ? rndY : 1);//乱数で移動量を設定(0が出ないように)
         }
+
         //プロパティ
         public double PosX { get => posX; set => posX = value; }
         public double PosY { get => posY; set => posY = value; }
