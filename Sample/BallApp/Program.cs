@@ -53,19 +53,24 @@ namespace BallApp {
 
             balls.Add(soccerBall);
             pbs.Add(pb);
-
+            
             moveTimer.Start(); //タイマースタート
 
         }
 
         //タイマーアウト時のイベントハンドラ
         private void MoveTimer_Tick(object sender, EventArgs e) {
+            int cnt = 0;
             for (int i = 0; i < balls.Count; i++)
             {
                 balls[i].Move();//移動
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY); //画像の位置
+                cnt += 1;
+                
+
             }
-           
+            this.Text = "BallGame" + cnt;
+
 
         }
     }
