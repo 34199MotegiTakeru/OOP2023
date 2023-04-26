@@ -13,8 +13,6 @@ namespace BallApp {
 
         public static int Cnt { get => cnt; set => cnt = value; }
 
-        // public static int Count { }//インスタンスの個数
-
 
         //コンストラクタ
         public SoccerBall(double xp,double yp) : base(xp, yp, @"pic\soccer_ball.png"){
@@ -28,7 +26,6 @@ namespace BallApp {
             Cnt++;
         }
 
-       
 
         //メソッド
         public override void Move() {

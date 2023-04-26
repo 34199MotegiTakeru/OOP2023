@@ -8,9 +8,11 @@ namespace BallApp {
     class TennisBall : Obj {
 
         Random r1 = new Random(); //乱数インスタンス
+
         private static int cnt ;
 
         public static int Cnt { get => cnt; set => cnt = value; }
+
 
         //コンストラクタ
         public TennisBall(double xp, double yp) : base(xp, yp, @"pic\tennis_ball.png") {
@@ -24,7 +26,6 @@ namespace BallApp {
             Cnt++;
         }
 
-        
 
         public override void Move() {
             // Console.WriteLine("X座標 = {0},Y座標 = {1}", posX, posY);
