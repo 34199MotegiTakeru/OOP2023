@@ -9,8 +9,12 @@ namespace BallApp {
 
         Random r1 = new Random(); //乱数インスタンス
 
-       // public static int Count { }//インスタンスの個数
-        
+        private static int cnt;
+
+        public static int Cnt { get => cnt; set => cnt = value; }
+
+        // public static int Count { }//インスタンスの個数
+
 
         //コンストラクタ
         public SoccerBall(double xp,double yp) : base(xp, yp, @"pic\soccer_ball.png"){
@@ -21,7 +25,7 @@ namespace BallApp {
             int rndY = r1.Next(-15, 15);
             MoveY = (rndY != 0 ? rndY : 1);//乱数で移動量を設定(0が出ないように)
 
-            //cnt++;
+            Cnt++;
         }
 
        
@@ -37,7 +41,6 @@ namespace BallApp {
             }
             PosX = PosX + MoveX;
             PosY = PosY + MoveY;
-                
         }
     }
 }
