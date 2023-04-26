@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BallApp {
     class SoccerBall : Obj{
@@ -38,6 +39,9 @@ namespace BallApp {
             }
             PosX = PosX + MoveX;
             PosY = PosY + MoveY;
+        }
+        public override void Move(Keys direction) {
+            ;
         }
     }
 }
