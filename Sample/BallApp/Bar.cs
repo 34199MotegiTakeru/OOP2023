@@ -15,12 +15,12 @@ namespace BallApp {
         }
 
         //抽象クラスを継承しているので、不要なメソッドは空にする
-        public override void Move() {
+        public override void Move(PictureBox pbBar, PictureBox pbBall) {
             ;//空のメソッドにする
         }
 
 
-        public void Move(Keys direction ) {
+        public override void Move(Keys direction ) {
             if (direction == Keys.Right){
                 if (PosX < 635){
                     PosX += MoveX;
@@ -32,5 +32,7 @@ namespace BallApp {
             }
             
         }
+
+       
     }
 }

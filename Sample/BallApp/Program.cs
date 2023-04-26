@@ -35,7 +35,7 @@ namespace BallApp {
             this.KeyDown += Program_KeyDown;
 
             //Barインスタンス生成
-            bar = new Bar(350,400);
+            bar = new Bar(350,500);
             pbBar = new PictureBox();
             pbBar.Image = bar.Image;
             pbBar.Location = new Point((int)bar.PosX, (int)bar.PosY);
@@ -70,7 +70,7 @@ namespace BallApp {
             }
             else if (e.Button == MouseButtons.Right){
                 obj = new TennisBall(e.X, e.Y);
-                pb.Size = new Size(25, 25); //画像の表示サイズ
+                pb.Size = new Size(15, 15); //画像の表示サイズ
                // tcnt += 1;
             }
             pb.Image = obj.Image;
@@ -90,7 +90,7 @@ namespace BallApp {
             int cnt = 0;
             for (int i = 0; i < balls.Count; i++)
             {
-                balls[i].Move();//移動
+                balls[i].Move(pbBar, pbs[i]);//移動
                 pbs[i].Location = new Point((int)balls[i].PosX, (int)balls[i].PosY); //画像の位置
                 cnt += 1;
             }

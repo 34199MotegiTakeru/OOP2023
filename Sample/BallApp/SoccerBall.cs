@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,13 @@ namespace BallApp {
 
 
         //メソッド
-        public override void Move() {
-           // Console.WriteLine("X座標 = {0},Y座標 = {1}", posX, posY);
-           if(PosY > 550 || PosY < 0){
+        public override void Move(PictureBox pbBar, PictureBox pbBall) {
+
+            Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y, pbBar.Width, pbBar.Height);
+            Rectangle rBall = new Rectangle(pbBall.Location.X, pbBall.Location.Y, pbBall.Width, pbBall.Height);
+
+            // Console.WriteLine("X座標 = {0},Y座標 = {1}", posX, posY);
+            if (PosY > 550 || PosY < 0 || rBar.IntersectsWith(rBall)){
                 MoveY = -MoveY; 
             }
             if (PosX > 750 || PosX < 0){
@@ -40,6 +45,7 @@ namespace BallApp {
             PosX = PosX + MoveX;
             PosY = PosY + MoveY;
         }
+
         public override void Move(Keys direction) {
             ;
         }
