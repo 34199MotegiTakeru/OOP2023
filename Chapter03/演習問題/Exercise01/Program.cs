@@ -35,15 +35,36 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(List<int> numbers) {
-            //var wari = numbers.
+            numbers.ForEach(n =>Console.WriteLine((double)n / 2));
         }
 
         private static void Exercise1_3(List<int> numbers) {
+            var izyou = numbers.Where(n => n >= 50);
+            foreach (var n in izyou) {
+                Console.WriteLine(n);         
+            }
 
+            //foreach (var item in numbers.Where(n => n >= 50)) {
+            //    Console.WriteLine(item);
+            //}
+
+            //(numbers.Where(n => n >= 50).ToList()).ForEach(Console.WriteLine);
         }
 
         private static void Exercise1_4(List<int> numbers) {
+            
 
+            var bai = numbers.Select(n => n * 2);
+            foreach (var n in bai) {
+                Console.WriteLine(n);
+            }
+
+            //List<int> list = numbers.Select(n => n * 2).ToList();
+            //foreach (var item in List) {
+            //    Console.WriteLine(n);
+            //}
+
+            //numbers.Select(n => n * 2).ToList().ForEach(Console.WriteLine);
+            }
         }
     }
-}
