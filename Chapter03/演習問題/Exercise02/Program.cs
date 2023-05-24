@@ -11,11 +11,11 @@ namespace Exercise02 {
                  "Tokyo", "New Delhi", "Bangkok", "London", "Paris", "Berlin", "Canberra", "Hong Kong",
             };
             Exercise2_1(names);
-            Console.WriteLine("----------");
+            Console.WriteLine("---------");
             Exercise2_2(names);
-            Console.WriteLine("----------");
+            Console.WriteLine("---------");
             Exercise2_3(names);
-            Console.WriteLine("----------");
+            Console.WriteLine("---------");
             Exercise2_4(names);
         }
 
