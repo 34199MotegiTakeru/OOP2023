@@ -44,9 +44,9 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> names) {
-            //var cnt = names.Where(n => n[0] == 'B').Select(n => n.Length);
-            //foreach (var item in cnt) {
-            //    Console.WriteLine(item);
+            var cnt = names.Where(n => n[0] == 'B').Select(n => n);
+            foreach (var item in cnt) {
+                Console.WriteLine(item + item.Length);
 
             }
         }
