@@ -37,7 +37,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
-            var cnt = names.Where(n => n.ToString().Contains('o'));
+            var cnt = names.Where(n => n.ToString().Contains('o')).ToArray();
             foreach (var item in cnt) {
                 Console.WriteLine(item);
             }
@@ -46,9 +46,10 @@ namespace Exercise02 {
         private static void Exercise2_4(List<string> names) {
             var cnt = names.Where(n => n[0] == 'B').Select(n => n);
             foreach (var item in cnt) {
-                Console.WriteLine(item + item.Length);
-
+                Console.WriteLine(item + "," + item.Length);
             }
+
+            //var cnt = names.Where(s => s.StartsWith("B")).Select(s => new { s, s.Length });
         }
     }
 }
