@@ -26,7 +26,7 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            int target = text.Count(f => f == ' ');
+            int target = text.Count(c => c == ' ');
             Console.WriteLine(target);
         }
 
@@ -36,7 +36,7 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_3(string text) {
-            var tango = text.Split(' ').Count();
+            var tango = text.Split(' ').Length;
             Console.WriteLine(tango);
         }
 
@@ -44,11 +44,21 @@ namespace Exercise03 {
             var ika = text.Split(' ').Where(n => n.Length <= 4);
             foreach (var item in ika) {
                 Console.WriteLine(item);
-
             }
         }
 
         private static void Exercise3_5(string text) {
+            var array = text.Split(' ').ToArray();
+            if(array.Length > 0) {
+                var sb = new StringBuilder();
+                sb.Append(array[0]);
+                foreach (var item in array.Skip(1)) {
+                    sb.Append(' ');
+                    sb.Append(item);
+                }
+                var createWords = sb.ToString();
+                Console.WriteLine(createWords);
+            }
             
         }
     }
