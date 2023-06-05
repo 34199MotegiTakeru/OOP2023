@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Section03 {
+namespace Exercise03 {
     class Program {
         static void Main(string[] args) {
             var list = new List<string> {
