@@ -12,6 +12,7 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
+        private uint mode;
 
         public Form1() {
             InitializeComponent();
@@ -96,8 +97,9 @@ namespace CarReportSystem {
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
-            ofdImageFileOpen.ShowDialog();
-            pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            if (ofdImageFileOpen.ShowDialog() == DialogResult.OK) {
+                pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -118,14 +120,16 @@ namespace CarReportSystem {
 
         //レコードの選択時
         private void dgvCarReports_Click(object sender, EventArgs e) {
-            dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-            cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-            setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-            cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-            tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-            pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
-            btModifyReport.Enabled = true; //修正ボタン有効
-            btDeleteReport.Enabled = true; //削除ボタン有効
+            if (dgvCarReports.Rows.Count != 0) {
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+                setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+                btModifyReport.Enabled = true; //修正ボタン有効
+                btDeleteReport.Enabled = true; //削除ボタン有効
+            }
         }
 
         //修正ボタンイベントハンドラ
@@ -171,6 +175,17 @@ namespace CarReportSystem {
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if(cdColor.ShowDialog() == DialogResult.OK)
                 BackColor = cdColor.Color;
+        }
+
+        private void btScaleChange_Click(object sender, EventArgs e) {
+            mode++;
+            if (mode > 4)
+                mode = 0;
+            pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
+
+            //mode = mode < 4 ? ++mode : 0;
+            //pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
+
         }
     }
 }
