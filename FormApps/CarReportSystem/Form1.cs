@@ -27,9 +27,10 @@ namespace CarReportSystem {
         private void btAddReport_Click(object sender, EventArgs e) {
             StatasLabelDisp();//ステータスラベルのテキスト非表示
             if (cbAuthor.Text == "") {
-                StatasLabelDisp("記録者を入力してください");                
+                StatasLabelDisp("記録者を入力してください");
                 return;
-            }else if(cbCarName.Text == "") {
+            }
+            else if (cbCarName.Text == "") {
                 StatasLabelDisp("車名を入力してください");
                 return;
             }
@@ -45,8 +46,12 @@ namespace CarReportSystem {
             CarReports.Add(carReport);
             btModifyReport.Enabled = true;
             btDeleteReport.Enabled = true;
-            cbAuthor.Items.Add(cbAuthor.Text);
-            cbCarName.Items.Add(cbCarName.Text);
+            if (!cbAuthor.Items.Contains(cbAuthor.Text)) {//コンボボックスに重複があるか
+                cbAuthor.Items.Add(cbAuthor.Text);
+            }
+            if (!cbCarName.Items.Contains(cbCarName.Text)) {//コンボボックスに重複があるか
+                cbCarName.Items.Add(cbCarName.Text);
+            }
             sakuzyo();
         }
 
@@ -161,6 +166,11 @@ namespace CarReportSystem {
 
         private void btImageDelete_Click(object sender, EventArgs e) {
             pbCarImage.Image = null;
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            cdColor.ShowDialog();
+            BackColor = cdColor.Color;
         }
     }
 }
