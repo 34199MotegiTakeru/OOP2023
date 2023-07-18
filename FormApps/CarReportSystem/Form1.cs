@@ -169,8 +169,8 @@ namespace CarReportSystem {
         }
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            cdColor.ShowDialog();
-            BackColor = cdColor.Color;
+            if(cdColor.ShowDialog() == DialogResult.OK)
+                BackColor = cdColor.Color;
         }
     }
 }

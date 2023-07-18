@@ -29,7 +29,7 @@ namespace CarReportSystem {
             // 
             // btOk
             // 
-            this.btOk.Location = new System.Drawing.Point(164, 111);
+            this.btOk.Location = new System.Drawing.Point(142, 152);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(75, 23);
             this.btOk.TabIndex = 0;
@@ -40,7 +40,7 @@ namespace CarReportSystem {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(393, 241);
             this.Controls.Add(this.btOk);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
