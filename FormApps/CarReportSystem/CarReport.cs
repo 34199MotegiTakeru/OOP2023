@@ -16,7 +16,7 @@ namespace CarReportSystem {
         public Image CarImage { get; set; } //画像
 
         //メーカー一覧【列挙型】
-        public enum MakerGroup {
+        public enum MakerGroup   {
             トヨタ,
             日産,
             ホンダ,
