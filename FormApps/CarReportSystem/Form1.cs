@@ -111,12 +111,17 @@ namespace CarReportSystem {
             dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
             btModifyReport.Enabled = false; //マスクする
             btDeleteReport.Enabled = false; //マスクする
+
             //設定ファイルを逆シリアル化して背景を設定
-            //using(var reader = XmlReader.Create("settings.xml")) {
-            //    var serializer = new XmlSerializer(typeof(Settings));
-            //    settings = serializer.Deserialize(reader) as Settings;
-            //    BackColor = Color.FromArgb(settings.MainFormColor);
-            //}
+            using(var reader = XmlReader.Create("settings.xml")) {
+                var serializer = new XmlSerializer(typeof(Settings));
+                settings = serializer.Deserialize(reader) as Settings;
+                BackColor = Color.FromArgb(settings.MainFormColor);
+            }
+
+            toolStripStatusLabel2.Text = "";//情報表示領域のテキストを初期化
+            tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
+            timer1.Start();
         }
 
         //削除ボタンイベントハンドラ
@@ -151,9 +156,10 @@ namespace CarReportSystem {
                 CarReports[dgvCarReports.CurrentRow.Index].Maker = getSelectedMaker();
                 CarReports[dgvCarReports.CurrentRow.Index].CarName = cbCarName.Text;
                 CarReports[dgvCarReports.CurrentRow.Index].Report = tbReport.Text;
+
                 dgvCarReports.Refresh();    //一覧更新
-                //if(dgvCarReports.Rows.Count == 0) {
-                    sakuzyo();
+                                            //if(dgvCarReports.Rows.Count == 0) {
+                sakuzyo();
                 //}
             }
         }
@@ -188,8 +194,9 @@ namespace CarReportSystem {
                 BackColor = cdColor.Color;
                 settings.MainFormColor = cdColor.Color.ToArgb();
             }
-
         }
+        
+
 
         private void btScaleChange_Click(object sender, EventArgs e) {
             //mode++;
@@ -208,6 +215,11 @@ namespace CarReportSystem {
                 var serialize = new XmlSerializer(settings.GetType());
                  serialize.Serialize(writer,settings);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
+
         }
     }
 }
