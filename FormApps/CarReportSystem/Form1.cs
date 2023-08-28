@@ -112,12 +112,18 @@ namespace CarReportSystem {
             btModifyReport.Enabled = false; //マスクする
             btDeleteReport.Enabled = false; //マスクする
 
-            //設定ファイルを逆シリアル化して背景を設定
-            using(var reader = XmlReader.Create("settings.xml")) {
-                var serializer = new XmlSerializer(typeof(Settings));
-                settings = serializer.Deserialize(reader) as Settings;
-                BackColor = Color.FromArgb(settings.MainFormColor);
+            try {
+                //設定ファイルを逆シリアル化して背景を設定
+                using (var reader = XmlReader.Create("settings.xml")) {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    settings = serializer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settings.MainFormColor);
+                }
             }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            
 
             toolStripStatusLabel2.Text = "";//情報表示領域のテキストを初期化
             tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
