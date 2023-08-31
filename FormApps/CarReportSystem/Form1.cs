@@ -138,6 +138,8 @@ namespace CarReportSystem {
             toolStripStatusLabel2.Text = "";//情報表示領域のテキストを初期化
             tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
             timer1.Start();
+
+            dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;//奇数行のみ色設定
         }
 
         //削除ボタンイベントハンドラ
@@ -151,21 +153,21 @@ namespace CarReportSystem {
         }
 
         //レコードの選択時
-        private void dgvCarReports_Click(object sender, EventArgs e) {
-            if (dgvCarReports.Rows.Count != 0) {
-                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
-                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
-                setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
-                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
-                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
-                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
-                btModifyReport.Enabled = true; //修正ボタン有効
-                btDeleteReport.Enabled = true; //削除ボタン有効
-            }
-        }
+        /* private void dgvCarReports_Click(object sender, EventArgs e) {
+              if (dgvCarReports.Rows.Count != 0) {
+                  dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+                  cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+                  setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+                  cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+                  tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                  pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+                  btModifyReport.Enabled = true; //修正ボタン有効
+                  btDeleteReport.Enabled = true; //削除ボタン有効
+              }
+          }*/
 
         //修正ボタンイベントハンドラ
-        private void btModifyReport_Click(object sender, EventArgs e) {
+        private void btModifyReport_Click_1(object sender, EventArgs e) {
             if (dgvCarReports.Rows.Count != 0) {
                 CarReports[dgvCarReports.CurrentRow.Index].Date = dtpDate.Value;
                 CarReports[dgvCarReports.CurrentRow.Index].Author = cbAuthor.Text;
@@ -179,6 +181,7 @@ namespace CarReportSystem {
                 //}
             }
         }
+        
 
         private void sakuzyo() {
             cbAuthor.Text = "";
@@ -277,5 +280,22 @@ namespace CarReportSystem {
             }
             sakuzyo();
         }
+
+
+        //レコードの選択時
+        private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (dgvCarReports.Rows.Count != 0) {
+                dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+                cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+                setSelectedMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+                cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+                tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+                pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+                btModifyReport.Enabled = true; //修正ボタン有効
+                btDeleteReport.Enabled = true; //削除ボタン有効
+            }
+        }
+
+        
     }
 }
