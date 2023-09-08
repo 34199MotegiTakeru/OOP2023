@@ -157,12 +157,15 @@ namespace CarReportSystem {
 
         //削除ボタンイベントハンドラ
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            if (dgvCarReports.Rows.Count != 0) {
-                CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
-                //if (dgvCarReports.Rows.Count == 0) {
-                sakuzyo();
-                //}
-            }
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+            sakuzyo();
+            this.carReportTableTableAdapter.Update(infosys202321DataSet.CarReportTable);//更新
+            //if (dgvCarReports.Rows.Count != 0) {
+            //    CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
+            //    //if (dgvCarReports.Rows.Count == 0) {
+            //    sakuzyo();
+            //    //}
+            //}
         }
 
         //レコードの選択時
