@@ -42,16 +42,27 @@ namespace CarReportSystem {
                 StatasLabelDisp("車名を入力してください");
                 return;
             }
-            var carReport = new CarReport                            //Saleインスタンスを生成
-            {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage = pbCarImage.Image,
-            };
-            CarReports.Add(carReport);
+
+            DataRow newRow = infosys202321DataSet.CarReportTable.NewRow();
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray(pbCarImage.Image);
+            infosys202321DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202321DataSet.CarReportTable);
+
+            //var carReport = new CarReport                            //Saleインスタンスを生成
+            //{
+            //    Date = dtpDate.Value,
+            //    Author = cbAuthor.Text,
+            //    Maker = getSelectedMaker(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage = pbCarImage.Image,
+            //};
+            //CarReports.Add(carReport);
             btModifyReport.Enabled = true;
             btDeleteReport.Enabled = true;
             setCbAuther(cbAuthor.Text);
