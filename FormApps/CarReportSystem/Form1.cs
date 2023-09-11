@@ -327,5 +327,17 @@ namespace CarReportSystem {
         private void 接続OToolStripMenuItem_Click(object sender, EventArgs e) {
             dbConnection();
         }
+
+        private void btAutherBottan_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuther(this.infosys202321DataSet.CarReportTable, tbAutherSarch.Text);
+        }
+
+        private void btCarNameBottan_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202321DataSet.CarReportTable, tbCarNameSarch.Text);
+        }
+
+        private void btDayBottan_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByDate(this.infosys202321DataSet.CarReportTable, tbDaySarch.CustomFormat);
+        }
     }
 }
