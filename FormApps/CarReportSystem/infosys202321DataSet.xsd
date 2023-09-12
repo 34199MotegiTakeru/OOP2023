@@ -82,7 +82,7 @@ SELECT Id, Date, Auther, Maker, CarName, Report, CarImage FROM CarReportTable WH
               <Mapping SourceColumn="CarImage" DataSetColumn="CarImage" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByAuther" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillByAuther" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByAuther">
+              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByAuther" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy1" GeneratorSourceName="FillByAuther" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByAuther">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      Id, Date, Auther, Maker, CarName, Report, CarImage
@@ -94,7 +94,7 @@ WHERE                       (Auther = @auther)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByCarName" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="FillByCarName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByCarName">
+              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByCarName" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy2" GeneratorSourceName="FillByCarName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByCarName">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      Id, Date, Auther, Maker, CarName, Report, CarImage
@@ -106,7 +106,7 @@ WHERE                       (CarName = @carname)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByDate" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillByDate">
+              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByDate" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByDate">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      Id, Date, Auther, Maker, CarName, Report, CarImage
@@ -118,7 +118,20 @@ WHERE                       (Date = @date)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByMaker" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillByMaker" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByMaker">
+              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByDate2" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByDate2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="FillByDate2">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT                      Id, Date, Auther, Maker, CarName, Report, CarImage
+FROM                         CarReportTable
+WHERE                       (Date BETWEEN @sdate AND @edate)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="sdate" ColumnName="Date" DataSourceName="infosys202321.dbo.CarReportTable" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@sdate" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="Date" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="edate" ColumnName="Date" DataSourceName="infosys202321.dbo.CarReportTable" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="@edate" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="Date" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="infosys202321ConnectionString (Settings)" DbObjectName="infosys202321.dbo.CarReportTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByMaker" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy3" GeneratorSourceName="FillByMaker" GetMethodModifier="Public" GetMethodName="GetDataBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillByMaker">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT                      Id, Date, Auther, Maker, CarName, Report, CarImage
@@ -140,7 +153,7 @@ WHERE                       (CarName = @maker)</CommandText>
   <xs:element name="infosys202321DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="infosys202321DataSet" msprop:Generator_UserDSName="infosys202321DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CarReportTable" msprop:Generator_TableClassName="CarReportTableDataTable" msprop:Generator_TableVarName="tableCarReportTable" msprop:Generator_TablePropName="CarReportTable" msprop:Generator_RowDeletingName="CarReportTableRowDeleting" msprop:Generator_RowChangingName="CarReportTableRowChanging" msprop:Generator_RowEvHandlerName="CarReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="CarReportTableRowDeleted" msprop:Generator_UserTableName="CarReportTable" msprop:Generator_RowChangedName="CarReportTableRowChanged" msprop:Generator_RowEvArgName="CarReportTableRowChangeEvent" msprop:Generator_RowClassName="CarReportTableRow">
+        <xs:element name="CarReportTable" msprop:Generator_TableClassName="CarReportTableDataTable" msprop:Generator_TableVarName="tableCarReportTable" msprop:Generator_RowChangedName="CarReportTableRowChanged" msprop:Generator_TablePropName="CarReportTable" msprop:Generator_RowDeletingName="CarReportTableRowDeleting" msprop:Generator_RowChangingName="CarReportTableRowChanging" msprop:Generator_RowEvHandlerName="CarReportTableRowChangeEventHandler" msprop:Generator_RowDeletedName="CarReportTableRowDeleted" msprop:Generator_RowClassName="CarReportTableRow" msprop:Generator_UserTableName="CarReportTable" msprop:Generator_RowEvArgName="CarReportTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />

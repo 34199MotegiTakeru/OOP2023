@@ -129,9 +129,10 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            
 
-            dgvCarReports.Columns[5].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[6].Visible = false;   //画像項目非表示
+            dgvCarReports.Columns[0].Visible = false;   //画像項目非表示
+
             btModifyReport.Enabled = false; //マスクする
             btDeleteReport.Enabled = false; //マスクする
 
@@ -146,7 +147,6 @@ namespace CarReportSystem {
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
-            
 
             toolStripStatusLabel2.Text = "";//情報表示領域のテキストを初期化
             tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
@@ -239,8 +239,6 @@ namespace CarReportSystem {
             }
         }
         
-
-
         private void btScaleChange_Click(object sender, EventArgs e) {
             //mode++;
             //if (mode > 4)
@@ -249,7 +247,6 @@ namespace CarReportSystem {
 
             mode = mode < 4 ? ((mode == 1) ? 3 : ++mode) : 0;//AutoSize(2)を除外
             pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
-
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -262,13 +259,7 @@ namespace CarReportSystem {
 
         private void timer1_Tick(object sender, EventArgs e) {
             tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
-
         }
-
-        
-
-        
-
 
         //レコードの選択時
         private void dgvCarReports_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -278,7 +269,6 @@ namespace CarReportSystem {
                 setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-
                 pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) 
                     && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length != 0 ?
                     ByteArrayToImage((Byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
@@ -318,6 +308,7 @@ namespace CarReportSystem {
             // TODO: このコード行はデータを 'infosys202321DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202321DataSet.CarReportTable);
             dgvCarReports.ClearSelection();//選択解除
+
             foreach (var item in infosys202321DataSet.CarReportTable) {
                 setCbAuther(item.Auther);
                 setCbCarName(item.CarName);
@@ -337,7 +328,11 @@ namespace CarReportSystem {
         }
 
         private void btDayBottan_Click(object sender, EventArgs e) {
-            carReportTableTableAdapter.FillByDate(this.infosys202321DataSet.CarReportTable, tbDaySarch.CustomFormat);
+            carReportTableTableAdapter.FillByDate2(this.infosys202321DataSet.CarReportTable ,tbDaySarch.Text,tbDaySarch2.Text);
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.Fill(this.infosys202321DataSet.CarReportTable);
         }
     }
 }
