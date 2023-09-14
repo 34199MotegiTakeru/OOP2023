@@ -10,6 +10,27 @@ using System.Threading.Tasks;
 namespace SampleEntityFramework {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine("# 1.1");
+            //Exercise1_1();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.2");
+            Exercise1_2();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.3");
+            Exercise1_3();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.4");
+            Exercise1_4();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.5");
+            Exercise1_5();
+
+            Console.ReadLine();
+
             //InsertBooks();
             //DisplayAllBooks();
             //AddAurhors();
@@ -21,15 +42,81 @@ namespace SampleEntityFramework {
             //    Console.WriteLine($"{book.Title}{book.Author.Name}");
             //}
 
-            using(var db = new BooksDbContext()) {
-                db.Database.Log = sql => { Debug.Write(sql); };
-                var count = db.Books.Count();
-                Console.WriteLine(count);
-            }
-
-            Console.ReadLine();
-            Console.WriteLine();
+            //using (var db = new BooksDbContext()) {
+            //    db.Database.Log = sql => { Debug.Write(sql); };
+            //    var count = db.Books.Count();
+            //    Console.WriteLine(count);
+            //}
         }
+
+        private static void Exercise1_1() {
+            using (var db = new BooksDbContext()) {
+                var book1 = new Book {
+                    Title = "伊豆の踊子",
+                    PublishedYear = 2003,
+                    Author = new Author {
+                        Birthday = new DateTime(1899, 6, 14),
+                        Gender = "男",
+                        Name = "川端康成",
+                    }
+                };
+                db.Books.Add(book1);
+                var book2 = new Book {
+                    Title = "真珠夫人",
+                    PublishedYear = 2003,
+                    Author = new Author {
+                        Birthday = new DateTime(1888, 12, 26),
+                        Gender = "男",
+                        Name = "菊池寛",
+                    }
+                };
+                db.Books.Add(book2);
+                var author1 = db.Authors.Single(a => a.Name == "夏目漱石");
+                var book3 = new Book {
+                    Title = "こころ",
+                    PublishedYear = 1991,
+                    Author = author1,
+                };
+                db.Books.Add(book3);
+                var author2 = db.Authors.Single(a => a.Name == "宮沢賢治");
+                var book4 = new Book {
+                    Title = "注文の多い料理店",
+                    PublishedYear = 2000,
+                    Author = author2,
+                };
+                db.Books.Add(book4);
+                db.SaveChanges();//データベース更新
+            }
+        }
+
+        private static void Exercise1_2() {
+            using (var db = new BooksDbContext()) {
+                foreach (var book in db.Books.ToList()) {
+                    Console.WriteLine($"{book.Title}{book.Author.Name}{book.PublishedYear}");
+                }
+            }
+        }
+
+        private static void Exercise1_3() {
+            using (var db = new BooksDbContext()) {
+                var lengthmax = db.Books.Max(a => a.Title.Length);
+                var max = db.Books.Where(b => b.Title.Length == lengthmax);
+                foreach (var book in max) {
+                    Console.WriteLine($"{book.Title}");
+                }
+            }
+        }
+
+        private static void Exercise1_4() {
+            using (var db = new BooksDbContext()) {
+
+            }
+        }
+
+        private static void Exercise1_5() {
+
+        }
+
         // List 13-5
         static void InsertBooks() {
             using (var db = new BooksDbContext()) {
@@ -57,6 +144,7 @@ namespace SampleEntityFramework {
                 Console.WriteLine($"{book1.Id}{book2.Id}");
             }
         }
+        
 
         // List 13-7
         static IEnumerable<Book> GetBooks() {
