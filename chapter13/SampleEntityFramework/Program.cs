@@ -109,7 +109,7 @@ namespace SampleEntityFramework {
 
         private static void Exercise1_4() {
             using (var db = new BooksDbContext()) {
-
+                
             }
         }
 
