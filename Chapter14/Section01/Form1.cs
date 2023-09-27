@@ -22,7 +22,7 @@ namespace Section01 {
             var startInfo = new ProcessStartInfo {
                 FileName = fullpath,
                 Arguments = @"c:\temp\Sample.txt",
-                WindowStyle = ProcessWindowStyle.Maximized
+                WindowStyle = ProcessWindowStyle.Maximizedl
             };
             Process.Start(startInfo);
         }
