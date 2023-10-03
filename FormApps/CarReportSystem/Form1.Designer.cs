@@ -368,6 +368,7 @@ namespace CarReportSystem {
             this.pbCarImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCarImage.TabIndex = 11;
             this.pbCarImage.TabStop = false;
+            this.pbCarImage.Click += new System.EventHandler(this.pbCarImage_Click);
             // 
             // btAddReport
             // 
