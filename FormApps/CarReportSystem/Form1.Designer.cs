@@ -144,6 +144,7 @@ namespace CarReportSystem {
             this.gbMaker.Size = new System.Drawing.Size(265, 95);
             this.gbMaker.TabIndex = 3;
             this.gbMaker.TabStop = false;
+            this.gbMaker.Enter += new System.EventHandler(this.gbMaker_Enter);
             // 
             // rbImported
             // 
@@ -256,6 +257,7 @@ namespace CarReportSystem {
             this.rbToyota.Tag = "0";
             this.rbToyota.Text = "トヨタ";
             this.rbToyota.UseVisualStyleBackColor = true;
+            this.rbToyota.CheckedChanged += new System.EventHandler(this.rbToyota_CheckedChanged);
             // 
             // cbCarName
             // 
@@ -294,6 +296,7 @@ namespace CarReportSystem {
             this.tbReport.Name = "tbReport";
             this.tbReport.Size = new System.Drawing.Size(315, 84);
             this.tbReport.TabIndex = 13;
+            this.tbReport.TextChanged += new System.EventHandler(this.tbReport_TextChanged);
             // 
             // dgvCarReports
             // 
