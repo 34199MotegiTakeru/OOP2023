@@ -25,6 +25,7 @@ namespace RssReader {
         private void btGet_Click(object sender, EventArgs e) {
             try {
                 if (tbUrl.TextLength != 0) {
+                    lbRssTitle.Items.Clear();//クリアしてから出力
                     using (var wc = new WebClient()) {
                         var url = wc.OpenRead(tbUrl.Text);
                         XDocument xdoc = XDocument.Load(url);
