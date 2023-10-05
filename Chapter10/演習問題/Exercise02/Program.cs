@@ -14,12 +14,10 @@ namespace Exercise02 {
 
         private static void Pickup3DigitNumber(string file) {
             foreach (var line in File.ReadLines(file)) {
-                //var lines = Regex.Matches(line, @"[0-9]+{3,}");
                 var lines = Regex.Matches(line, @"\b[0-9]{3,}\b");
 
                 foreach (Match match in lines) {
                     Console.WriteLine( match.Value);
-
                 }
             }
         }

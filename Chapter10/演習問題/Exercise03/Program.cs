@@ -14,8 +14,13 @@ namespace Exercise03 {
                "It will take time.",
                "We reorganized the timetable.",
             };
-            var regex = new Regex(@"\b(T|t)ime\b");
-            
+            foreach (var line in texts) {
+                var matches = Regex.Matches(line,@"\b(T|t)ime\b");
+
+                foreach (Match match in matches) {
+                    Console.WriteLine("{0}: {1}", line, match.Index);
+                }
+            }
 
 
 
