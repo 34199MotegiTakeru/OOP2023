@@ -10,17 +10,12 @@ namespace Exercise04 {
     class Program {
         static void Main(string[] args) {
             var lines = File.ReadAllLines("sample.txt");
-            var pattern = @"v4.0";
-            foreach (var item in lines) {
-                var replaced = Regex.Replace(item, pattern, "v5.0");
-
-                
-            }
-
-
+            var pattern = lines
+                .Select(s => Regex.Replace(s, @"\b(V|v)ersion\s*=\s*""v4.0""", @"version=""v5.0"" "));
 
             //書き込み
-            //File.WriteAllLines();
+            File.WriteAllLines("sample.txt",pattern);
+
 
             // これ以降は確認用
             var text = File.ReadAllText("sample.txt");
