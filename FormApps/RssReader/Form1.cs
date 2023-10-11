@@ -55,11 +55,10 @@ namespace RssReader {
             wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e) {
-            
-        }
+        
 
-        }
+        
+    }
     }
 
 
