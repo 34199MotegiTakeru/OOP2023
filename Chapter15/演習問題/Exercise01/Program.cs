@@ -34,12 +34,14 @@ namespace Exercise01 {
             var groups = Library.Books.GroupBy(b => b.PublishedYear).OrderBy(g => g.Key);
             foreach (var g in groups) {
                 Console.WriteLine("{0}年 {1}冊",$"{g.Key}",g.Count());
-                
             }
         }
 
         private static void Exercise1_4() {
-
+            var groups = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(g => g.Price);
+            foreach (var g in groups) {
+                Console.WriteLine(g);
+            }
         }
 
         private static void Exercise1_5() {
