@@ -41,11 +41,18 @@ namespace Exercise01 {
             var groups = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(g => g.Price);
             foreach (var g in groups) {
                 Console.WriteLine(g);
-            }
+            }    
         }
 
         private static void Exercise1_5() {
-
+            var name = Library.Books.Where(b => b.PublishedYear == 2016).
+                Join(Library.Categories,
+                    book => book.CategoryId,
+                    category => category.Id,
+                    (book, category) => category.Name).Distinct();
+            foreach (var item in name) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise1_6() {
