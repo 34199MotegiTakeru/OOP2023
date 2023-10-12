@@ -51,7 +51,7 @@ namespace Exercise01 {
                     category => category.Id,
                     (book, category) => category.Name).Distinct();
             foreach (var item in name) {
-                Console.WriteLine(item);
+                Console.WriteLine(item); 
             }
         }
 
