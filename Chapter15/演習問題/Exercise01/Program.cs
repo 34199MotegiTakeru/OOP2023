@@ -38,10 +38,27 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4() {
-            var groups = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(g => g.Price);
-            foreach (var g in groups) {
-                Console.WriteLine(g);
-            }    
+            //var groups = Library.Books.OrderByDescending(b => b.PublishedYear).ThenByDescending(g => g.Price);
+            //foreach (var g in groups) {
+            //    Console.WriteLine(g);
+            //}
+
+            var query = Library.Books
+                .Join(Library.Categories,
+                book => book.CategoryId,
+                category => category.Id,
+                (book, category) => new {
+                    book.PublishedYear,
+                    book.Price,
+                    book.Title,
+                    CategoryName = category.Name,
+                })
+                .OrderByDescending(x => x.PublishedYear).ThenByDescending(g => g.Price);
+
+            foreach (var item in query) {
+                Console.WriteLine("{0}年{1}円{2} ({3})",
+                    item.PublishedYear, item.Price, item.Title, item.CategoryName);
+            }
         }
 
         private static void Exercise1_5() {
@@ -56,7 +73,24 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-
+            var query = Library.Books
+                .Join(Library.Categories,
+                book => book.CategoryId,
+                category => category.Id,
+                (book, category) => new {
+                    book.PublishedYear,
+                    book.Price,
+                    book.Title,
+                    CategoryName = category.Name,
+                })
+                .GroupBy(x => x.CategoryName)
+                .OrderBy(x => x.Key);
+            foreach (var group in query) {
+                Console.WriteLine("＃{0}",group.Key);
+                foreach (var book in group) {
+                    Console.WriteLine("{0}",book.Title);
+                }
+            }
         }
 
         private static void Exercise1_7() {
