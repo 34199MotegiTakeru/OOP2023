@@ -56,8 +56,14 @@ namespace ColorChecker {
             bSlider.Value = (double)color.B;
         }
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-
+            stockList.Items.Add("R: " + rSlider.Value + " G: " +  gSlider.Value +  " B: " + bSlider.Value);
         }
 
+        private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            string[] s = stockList.SelectedItem.ToString().Split(' ');
+            rValue.Text = s[1];
+            gValue.Text = s[3];
+            bValue.Text = s[5];
+        }
     }
 }
