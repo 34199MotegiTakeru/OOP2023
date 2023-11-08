@@ -55,12 +55,20 @@ namespace RssReader {
             wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
         }
 
-        
+        private void 国内_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/domestic.xml";
+        }
 
-        
+        private void 国際_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/world.xml";
+        }
+
+        private void 経済_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/world.xml";
+        }
+
+        private void スポーツ_CheckedChanged(object sender, EventArgs e) {
+            tbUrl.Text = "https://news.yahoo.co.jp/rss/topics/sports.xml";
+        }
     }
-    }
-
-
-        
-    
+}  

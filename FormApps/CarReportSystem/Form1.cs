@@ -296,20 +296,6 @@ namespace CarReportSystem {
             }
         }
 
-        private void pbCarImage_Click(object sender, EventArgs e) {
-
-        }
-
-        private void tbReport_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void gbMaker_Enter(object sender, EventArgs e) {
-
-        }
-
-        private void rbToyota_CheckedChanged(object sender, EventArgs e) {
-
-        }
+        
     }
 }
