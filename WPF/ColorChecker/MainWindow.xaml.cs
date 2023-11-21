@@ -44,6 +44,9 @@ namespace ColorChecker {
         public class MyColor {
             public Color Color { get; set; }
             public string Name { get; set; }
+            public override string ToString() {
+                return Name ?? "R :　" + Color.R + "　G :　" + Color.G + "　B :　" + Color.B;
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -55,15 +58,37 @@ namespace ColorChecker {
             gSlider.Value = (double)color.G;
             bSlider.Value = (double)color.B;
         }
+
         private void stockButton_Click(object sender, RoutedEventArgs e) {
-            stockList.Items.Add("R: " + rSlider.Value + " G: " +  gSlider.Value +  " B: " + bSlider.Value);
+            var color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
+            var name = GetColorList().FirstOrDefault(f => f.Color == color)?.Name;
+            var c = new MyColor {
+                Name = name,
+                Color = color
+            };
+            if (stockList.Items.Contains(DataContext)) {
+                stockList.Items.Add(c.Name);
+            }
+            else {
+                stockList.Items.Add(c);
+            }
         }
 
         private void stockList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            string[] s = stockList.SelectedItem.ToString().Split(' ');
-            rValue.Text = s[1];
-            gValue.Text = s[3];
-            bValue.Text = s[5];
+
+            string[] s = stockList.SelectedItem.ToString().Split('　');
+            if(s.Length > 1) {
+                rValue.Text = s[1];
+                gValue.Text = s[3];
+                bValue.Text = s[5];
+            }
+            else {
+                var color = GetColorList().Where(n => n.Name.Equals(s[0])).FirstOrDefault();
+                rValue.Text = color.Color.R.ToString();
+                gValue.Text = color.Color.G.ToString();
+                bValue.Text = color.Color.B.ToString();
+            }
+           
         }
     }
 }

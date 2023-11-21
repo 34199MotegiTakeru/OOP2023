@@ -55,7 +55,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="stockButton" Content="STOCK" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="232" Height="87" FontSize="30" Click="stockButton_Click"/>
+            <Button x:Name="stockButton" Content="STOCK" HorizontalAlignment="Left" Margin="8,15,0,0" VerticalAlignment="Top" Width="232" Height="87" FontSize="30" Click="stockButton_Click"/>
             <ListBox x:Name="stockList"  Height="290" Margin="5" Grid.Row="1" VerticalAlignment="Top" Width="237" SelectionChanged="stockList_SelectionChanged"/>
         </Grid>
 
